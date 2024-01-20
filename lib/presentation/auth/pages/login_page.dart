@@ -4,6 +4,7 @@ import 'package:flutter_kasir_apps_frontend/core/components/buttons.dart';
 import 'package:flutter_kasir_apps_frontend/core/components/custom_text_field.dart';
 import 'package:flutter_kasir_apps_frontend/core/components/spaces.dart';
 import 'package:flutter_kasir_apps_frontend/core/assets/assets.gen.dart';
+import 'package:flutter_kasir_apps_frontend/data/data_sources/auth_local.dart';
 import 'package:flutter_kasir_apps_frontend/presentation/auth/bloc/login_bloc.dart';
 import 'package:flutter_kasir_apps_frontend/presentation/home/pages/home_page.dart';
 
@@ -76,6 +77,7 @@ class _LoginPageState extends State<LoginPage> {
               state.maybeWhen(
                 orElse: () {},
                 success: (authResponseModel) {
+                  AuthLocal().saveAuth(authResponseModel);
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => const HomePage()),
@@ -85,6 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(message),
+                      backgroundColor: Colors.red,
                     ),
                   );
                 },
@@ -92,21 +95,24 @@ class _LoginPageState extends State<LoginPage> {
             },
             child: BlocBuilder<LoginBloc, LoginState>(
               builder: (context, state) {
-                return state.maybeWhen(orElse: () {
-                  return Button.filled(
-                    onPressed: () {
-                      context.read<LoginBloc>().add(LoginEvent.login(
-                            email: usernameController.text,
-                            password: passwordController.text,
-                          ));
-                    },
-                    label: 'Masuk',
-                  );
-                }, loading: () {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                });
+                return state.maybeWhen(
+                  orElse: () {
+                    return Button.filled(
+                      onPressed: () {
+                        context.read<LoginBloc>().add(LoginEvent.login(
+                              email: usernameController.text,
+                              password: passwordController.text,
+                            ));
+                      },
+                      label: 'Masuk',
+                    );
+                  },
+                  loading: () {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                );
               },
             ),
           )

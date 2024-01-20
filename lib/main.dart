@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_kasir_apps_frontend/core/constants/colors.dart';
+import 'package:flutter_kasir_apps_frontend/data/data_sources/auth_local.dart';
 import 'package:flutter_kasir_apps_frontend/data/data_sources/auth_remote.dart';
 import 'package:flutter_kasir_apps_frontend/presentation/auth/bloc/login_bloc.dart';
 import 'package:flutter_kasir_apps_frontend/presentation/auth/pages/login_page.dart';
+import 'package:flutter_kasir_apps_frontend/presentation/home/bloc/logout_bloc.dart';
+import 'package:flutter_kasir_apps_frontend/presentation/home/pages/dashboard_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -15,8 +18,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LoginBloc( AuthRemote()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LoginBloc(AuthRemote()),
+        ),
+        BlocProvider(
+          create: (context) => LogoutBloc(
+            AuthRemote(),
+          ),
+        ),
+      ],
       child: MaterialApp(
         title: 'Flutter FIC Batch 11',
         theme: ThemeData(
@@ -38,7 +50,15 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const LoginPage(),
+        home: FutureBuilder<bool>(
+            future: AuthLocal().isAuth(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData && snapshot.data == true) {
+                return const DashboardPage();
+              } else {
+                return const LoginPage();
+              }
+            }),
       ),
     );
   }

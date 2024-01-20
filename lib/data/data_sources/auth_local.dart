@@ -2,19 +2,27 @@ import 'package:flutter_kasir_apps_frontend/data/model/respons/auth_response_mod
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthLocal {
-  Future<void> saveAuthData(AuthResponseModel authResponseModel) async {
+  Future<void> saveAuth(AuthResponseModel authResponseModel) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('auth_data', authResponseModel.toJson() as String);
+    await prefs.setString('auth_data', authResponseModel.toJson());
   }
 
-  Future<void> removeAuthData() async {
+  Future<void> removeAuth() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('auth_data');
   }
 
-  Future<AuthResponseModel?> getAuthData() async {
+  Future<AuthResponseModel?> getAuth() async {
     final prefs = await SharedPreferences.getInstance();
     final authData = prefs.getString('auth_data');
-    return AuthResponseModel.fromJson(authData as Map<String, dynamic>);
+
+    return AuthResponseModel.fromJson(authData!);
+  }
+
+  Future<bool> isAuth() async {
+    final prefs = await SharedPreferences.getInstance();
+    final authData = prefs.getString('auth_data');
+
+    return authData != null;
   }
 }
