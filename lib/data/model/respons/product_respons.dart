@@ -11,13 +11,11 @@ class ProductResponseModel {
     required this.data,
   });
 
-  factory ProductResponseModel.fromJson(String str) =>
-      ProductResponseModel.fromMap(json.decode(str));
+  factory ProductResponseModel.fromJson(String str) => ProductResponseModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ProductResponseModel.fromMap(Map<String, dynamic> json) =>
-      ProductResponseModel(
+  factory ProductResponseModel.fromMap(Map<String, dynamic> json) => ProductResponseModel(
         success: json["success"],
         message: json["message"],
         data: List<Product>.from(json["data"].map((x) => Product.fromMap(x))),
@@ -82,8 +80,6 @@ class Product {
         "stock": stock,
         "category": category,
         "image": image,
-        "is_best_seller": isBestSeller ? 1 : 0,
-        "product_id": productId,
       };
   Map<String, dynamic> toLocalMap() => {
         "name": name,

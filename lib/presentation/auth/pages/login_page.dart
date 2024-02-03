@@ -6,7 +6,7 @@ import 'package:flutter_kasir_apps_frontend/core/components/spaces.dart';
 import 'package:flutter_kasir_apps_frontend/core/assets/assets.gen.dart';
 import 'package:flutter_kasir_apps_frontend/data/data_sources/auth_local.dart';
 import 'package:flutter_kasir_apps_frontend/presentation/auth/bloc/login_bloc.dart';
-import 'package:flutter_kasir_apps_frontend/presentation/home/pages/home_page.dart';
+import 'package:flutter_kasir_apps_frontend/presentation/home/pages/dashboard_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                   AuthLocal().saveAuth(authResponseModel);
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
+                    MaterialPageRoute(builder: (context) => const DashboardPage()),
                   );
                 },
                 error: (message) {

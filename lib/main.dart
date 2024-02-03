@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_kasir_apps_frontend/core/constants/colors.dart';
 import 'package:flutter_kasir_apps_frontend/data/data_sources/auth_local.dart';
 import 'package:flutter_kasir_apps_frontend/data/data_sources/auth_remote.dart';
+import 'package:flutter_kasir_apps_frontend/data/data_sources/product_remote.dart';
 import 'package:flutter_kasir_apps_frontend/presentation/auth/bloc/login_bloc.dart';
 import 'package:flutter_kasir_apps_frontend/presentation/auth/pages/login_page.dart';
-import 'package:flutter_kasir_apps_frontend/presentation/home/bloc/logout_bloc.dart';
+import 'package:flutter_kasir_apps_frontend/presentation/home/bloc/logout/logout_bloc.dart';
+import 'package:flutter_kasir_apps_frontend/presentation/home/bloc/products/product_bloc.dart';
 import 'package:flutter_kasir_apps_frontend/presentation/home/pages/dashboard_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,6 +29,9 @@ class MyApp extends StatelessWidget {
           create: (context) => LogoutBloc(
             AuthRemote(),
           ),
+        ),
+        BlocProvider(
+          create: (context) => ProductBloc(ProductRemote())..add(const ProductEvent.fetchLocal()),
         ),
       ],
       child: MaterialApp(

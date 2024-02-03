@@ -1,11 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_kasir_apps_frontend/presentation/home/models/product_models.dart';
+import 'package:flutter_kasir_apps_frontend/core/constants/variable.dart';
+import 'package:flutter_kasir_apps_frontend/core/exstensions/int_ext.dart';
+import 'package:flutter_kasir_apps_frontend/data/model/respons/product_respons.dart';
 
 import '../../../core/components/spaces.dart';
 import '../../../core/constants/colors.dart';
 
 class ProductCard extends StatelessWidget {
-  final ProductModel data;
+  final Product data;
   final VoidCallback onCartButton;
 
   const ProductCard({
@@ -36,11 +39,17 @@ class ProductCard extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(50.0)),
-              child: Image.asset(
-                data.image,
-                width: 68,
-                height: 68,
-                fit: BoxFit.cover,
+              child: CachedNetworkImage(
+                imageUrl: '${Variable.imageBaseUrl}${data.image}',
+                width: 80,
+                height: 80,
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    CircularProgressIndicator(value: downloadProgress.progress),
+                errorWidget: (context, url, error) => const Icon(
+                  Icons.food_bank,
+                  color: AppColors.primary,
+                  size: 80,
+                ),
               ),
             ),
           ),
@@ -56,7 +65,7 @@ class ProductCard extends StatelessWidget {
           ),
           const SpaceHeight(8.0),
           Text(
-            data.category.value,
+            data.category,
             style: const TextStyle(
               color: AppColors.grey,
               fontSize: 12,
@@ -68,7 +77,7 @@ class ProductCard extends StatelessWidget {
             children: [
               Flexible(
                 child: Text(
-                  data.priceFormat,
+                  data.price.currencyFormatRp,
                   style: const TextStyle(
                     fontWeight: FontWeight.w700,
                   ),
