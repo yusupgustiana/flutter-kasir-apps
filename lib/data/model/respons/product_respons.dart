@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class ProductResponseModel {
@@ -37,7 +38,7 @@ class Product {
   final int stock;
   final String category;
   final String image;
-  final bool isBestSeller;
+  final bool bestSeller;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -50,7 +51,7 @@ class Product {
     required this.stock,
     required this.category,
     required this.image,
-    this.isBestSeller = false,
+    this.bestSeller = false,
     this.createdAt,
     this.updatedAt,
   });
@@ -68,7 +69,7 @@ class Product {
         stock: json["stock"],
         category: json["category"],
         image: json["image"] ?? '',
-        isBestSeller: json["is_best_seller"] == 1 ? true : false,
+        bestSeller: json["best_seller"] == 1 ? true : false,
 
         // createdAt: DateTime.parse(json["created_at"]),
         // updatedAt: DateTime.parse(json["updated_at"]),
@@ -80,6 +81,7 @@ class Product {
         "stock": stock,
         "category": category,
         "image": image,
+        "best_seller": bestSeller ? 1 : 0,
       };
   Map<String, dynamic> toLocalMap() => {
         "name": name,
@@ -87,7 +89,7 @@ class Product {
         "stock": stock,
         "category": category,
         "image": image,
-        "is_best_seller": isBestSeller ? 1 : 0,
+        "best_seller": bestSeller ? 1 : 0,
         "product_id": id,
       };
 
@@ -100,7 +102,8 @@ class Product {
     int? stock,
     String? category,
     String? image,
-    bool? isBestSeller,
+    bool? bestSeller,
+    bool? isSync,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) {
@@ -113,7 +116,7 @@ class Product {
       stock: stock ?? this.stock,
       category: category ?? this.category,
       image: image ?? this.image,
-      isBestSeller: isBestSeller ?? this.isBestSeller,
+      bestSeller: bestSeller ?? this.bestSeller,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
@@ -131,7 +134,7 @@ class Product {
         other.stock == stock &&
         other.category == category &&
         other.image == image &&
-        other.isBestSeller == isBestSeller &&
+        other.bestSeller == bestSeller &&
         other.createdAt == createdAt &&
         other.updatedAt == updatedAt;
   }
@@ -145,7 +148,7 @@ class Product {
         stock.hashCode ^
         category.hashCode ^
         image.hashCode ^
-        isBestSeller.hashCode ^
+        bestSeller.hashCode ^
         createdAt.hashCode ^
         updatedAt.hashCode;
   }

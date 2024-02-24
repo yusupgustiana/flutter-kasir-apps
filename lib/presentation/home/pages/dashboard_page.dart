@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kasir_apps_frontend/core/exstensions/build_context_ext.dart';
 import 'package:flutter_kasir_apps_frontend/presentation/home/pages/home_page.dart';
-import 'package:flutter_kasir_apps_frontend/presentation/home/pages/manage_menu_page.dart';
+import 'package:flutter_kasir_apps_frontend/presentation/setting/pages/manage_product_page.dart';
 import 'package:flutter_kasir_apps_frontend/presentation/home/pages/order_page.dart';
-import 'package:flutter_kasir_apps_frontend/presentation/home/pages/setting_page.dart';
+import 'package:flutter_kasir_apps_frontend/presentation/setting/pages/setting_page.dart';
 import 'package:flutter_kasir_apps_frontend/presentation/home/widget/nav_item.dart';
 
 import '../../../core/assets/assets.gen.dart';
@@ -19,7 +19,7 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [const HomePage(), const OrderPage(), const ManageMenuPage(), const SettingPage()];
+  final List<Widget> _pages = [const HomePage(), const OrderPage(), const ManageProductPage(), const SettingPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +73,8 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
           ],
         ),
-      ), );
+      ),
+    );
   }
 
   void _onItemTapped(int index) {

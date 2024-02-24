@@ -41,14 +41,11 @@ class ProductCard extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(50.0)),
               child: CachedNetworkImage(
                 imageUrl: '${Variable.imageBaseUrl}${data.image}',
-                width: 80,
-                height: 80,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     CircularProgressIndicator(value: downloadProgress.progress),
                 errorWidget: (context, url, error) => const Icon(
                   Icons.food_bank,
                   color: AppColors.primary,
-                  size: 80,
                 ),
               ),
             ),
