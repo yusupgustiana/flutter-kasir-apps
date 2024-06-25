@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+
 class ProductResponseModel {
   final bool success;
   final String message;
@@ -60,20 +61,18 @@ class Product {
   factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
+
   factory Product.fromMap(Map<String, dynamic> json) => Product(
         id: json["id"],
         productId: json["product_id"],
         name: json["name"],
         description: json["description"] ?? '',
-        price: json["price"] != null
-            ? int.tryParse(json["price"].toString()) ?? 0
-            : 0,
-        stock: json["stock"] != null
-            ? int.tryParse(json["stock"].toString()) ?? 0
-            : 0,
+        price: json["price"],
+        stock: json["stock"],
         category: json["category"],
         image: json["image"] ?? '',
         isBestSeller: json["is_best_seller"] == 1 ? true : false,
+
         // createdAt: DateTime.parse(json["created_at"]),
         // updatedAt: DateTime.parse(json["updated_at"]),
       );
@@ -85,6 +84,7 @@ class Product {
         "category": category,
         "image": image,
         "is_best_seller": isBestSeller ? 1 : 0,
+        "product_id": productId,
       };
   Map<String, dynamic> toLocalMap() => {
         "name": name,

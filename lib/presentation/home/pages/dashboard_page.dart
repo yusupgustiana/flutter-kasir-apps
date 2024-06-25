@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:new_kasir_apps/core/exstensions/build_context_ext.dart';
 import 'package:new_kasir_apps/core/gen/assets.gen.dart';
+import 'package:new_kasir_apps/presentation/history/pages/history_page.dart';
 import 'package:new_kasir_apps/presentation/home/pages/home_page.dart';
-import 'package:new_kasir_apps/presentation/home/pages/order_page.dart';
 import 'package:new_kasir_apps/presentation/home/widgets/nav_item.dart';
-import 'package:new_kasir_apps/presentation/setting/pages/manage_product_page.dart';
+import 'package:new_kasir_apps/presentation/order/pages/order_page.dart';
 import 'package:new_kasir_apps/presentation/setting/pages/setting_page.dart';
 
 import '../../../core/constants/colors.dart';
@@ -19,7 +19,7 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [const HomePage(), const OrderPage(), const ManageProductPage(), const SettingPage()];
+  final List<Widget> _pages = [const HomePage(), const OrderPage(), HistoryPage(), const SettingPage()];
 
   @override
   Widget build(BuildContext context) {

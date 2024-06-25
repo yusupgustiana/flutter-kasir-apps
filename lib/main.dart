@@ -4,13 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:new_kasir_apps/core/constants/colors.dart';
 import 'package:new_kasir_apps/data/data_sources/auth_local.dart';
 import 'package:new_kasir_apps/data/data_sources/auth_remote.dart';
+import 'package:new_kasir_apps/data/data_sources/midtrans_remote_datasource.dart';
+import 'package:new_kasir_apps/data/data_sources/order_remote.dart';
 import 'package:new_kasir_apps/data/data_sources/product_remote.dart';
 import 'package:new_kasir_apps/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:new_kasir_apps/presentation/auth/pages/login_page.dart';
-import 'package:new_kasir_apps/presentation/home/bloc/bloc/checkout_bloc.dart';
+import 'package:new_kasir_apps/presentation/history/bloc/bloc/history_bloc.dart';
+import 'package:new_kasir_apps/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:new_kasir_apps/presentation/home/bloc/logout/logout_bloc.dart';
 import 'package:new_kasir_apps/presentation/home/bloc/products/product_bloc.dart';
 import 'package:new_kasir_apps/presentation/home/pages/dashboard_page.dart';
+import 'package:new_kasir_apps/presentation/order/bloc/order/order_bloc.dart';
+import 'package:new_kasir_apps/presentation/order/bloc/qris/bloc/qris_bloc.dart';
+import 'package:new_kasir_apps/presentation/setting/bloc/bloc/sync_order_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +41,20 @@ class MyApp extends StatelessWidget {
           create: (context) => ProductBloc(ProductRemote())
             ..add(const ProductEvent.fetchLocal()),
         ),
-        BlocProvider(create: (context) => CheckoutBloc())
+        BlocProvider(create: (context) => CheckoutBloc()),
+        BlocProvider(
+          create: (context) => OrderBloc(),
+        ),
+        //history
+        BlocProvider(
+          create: (context) => HistoryBloc(),
+        ),
+        BlocProvider(
+          create: (context) => SyncOrderBloc(OrderRemote()),
+        ),
+        BlocProvider(
+          create: (context) => QrisBloc(MidtransRemoteDatasource()),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter',

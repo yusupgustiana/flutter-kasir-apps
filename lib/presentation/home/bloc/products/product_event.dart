@@ -8,4 +8,8 @@ class ProductEvent with _$ProductEvent {
   const factory ProductEvent.fetchLocal() = _FetchLocal;
 //add product
 const factory ProductEvent.addProduct( Product product, XFile image) = _AddProduct;
+//search for products
+const factory ProductEvent.searchProduct(String query) = _SearchProduct;
+//fecth all from state
+const factory ProductEvent.fetchAllFromState() = _FetchAllFromState;
 }

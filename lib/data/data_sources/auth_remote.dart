@@ -24,7 +24,7 @@ class AuthRemote {
     final authData = await AuthLocal().getAuth();
     final response = await http.post(
       Uri.parse('${Variable.baseUrl}/api/logout'),
-      headers: {'Authorization': 'Bearer ${authData!.token}'},
+      headers: {'Authorization': 'Bearer ${authData.token}'},
     );
     if (response.statusCode == 200) {
       return Right(AuthResponseModel.fromJson(response.body));

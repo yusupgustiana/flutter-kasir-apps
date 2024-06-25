@@ -1,4 +1,3 @@
-
 import 'package:new_kasir_apps/data/model/respons/auth_response_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,7 +12,7 @@ class AuthLocal {
     await prefs.remove('auth_data');
   }
 
-  Future<AuthResponseModel?> getAuth() async {
+  Future<AuthResponseModel> getAuth() async {
     final prefs = await SharedPreferences.getInstance();
     final authData = prefs.getString('auth_data');
 
@@ -25,5 +24,17 @@ class AuthLocal {
     final authData = prefs.getString('auth_data');
 
     return authData != null;
+  }
+
+  Future<void> saveMidtransServerKey(String serverKey) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('server_key', serverKey);
+  }
+
+  //get midtrans server key
+  Future<String> getMitransServerKey() async {
+    final prefs = await SharedPreferences.getInstance();
+    final serverKey = prefs.getString('server_key');
+    return serverKey ?? '';
   }
 }

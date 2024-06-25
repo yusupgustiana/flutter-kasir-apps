@@ -13,7 +13,7 @@ class ProductRemote {
     final authData = await AuthLocal().getAuth();
     final response = await http.get(
       Uri.parse('${Variable.baseUrl}/api/products'),
-      headers: {'Authorization': 'Bearer ${authData?.token}'},
+      headers: {'Authorization': 'Bearer ${authData.token}'},
     );
     if (response.statusCode == 200) {
       return Right(ProductResponseModel.fromJson(response.body));
@@ -50,7 +50,7 @@ class ProductRemote {
       ProductRequestModel productRequestModel) async {
     final authData = await AuthLocal().getAuth();
     final Map<String, String> headers = {
-      'Authorization': 'Bearer ${authData?.token}',
+      'Authorization': 'Bearer ${authData.token}',
     };
     var request = http.MultipartRequest(
         'POST', Uri.parse('${Variable.baseUrl}/api/products'));

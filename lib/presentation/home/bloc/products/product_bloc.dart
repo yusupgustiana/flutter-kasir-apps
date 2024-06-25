@@ -67,5 +67,22 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         },
       );
     });
+
+    //search for products
+    on<_SearchProduct>((event, emit) async {
+      emit(const ProductState.loading());
+
+      final respons = products
+          .where((element) =>
+              element.name.toLowerCase().contains(event.query.toLowerCase()))
+          .toList();
+      emit(ProductState.success(respons));
+    });
+
+    //fetch all from state
+    on<_FetchAllFromState>((event, emit) async {
+      emit(const ProductState.loading());
+      emit(ProductState.success(products));
+    });
   }
 }

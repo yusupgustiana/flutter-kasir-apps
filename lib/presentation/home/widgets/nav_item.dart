@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:new_kasir_apps/core/components/spaces.dart';
 import 'package:new_kasir_apps/core/constants/colors.dart';
 import 'package:badges/badges.dart' as badges;
-import 'package:new_kasir_apps/presentation/home/bloc/bloc/checkout_bloc.dart';
+import 'package:new_kasir_apps/presentation/home/bloc/checkout/checkout_bloc.dart';
 
 class NavItem extends StatelessWidget {
   final String iconPath;
@@ -40,7 +40,7 @@ class NavItem extends StatelessWidget {
                               BlendMode.srcIn,
                             ),
                           ));
-                    }, success: (data, tq, total) {
+                    }, success: (data, qty, total) {
                       if (data.isEmpty) {
                         return SizedBox(
                           width: 25.0,
@@ -56,7 +56,7 @@ class NavItem extends StatelessWidget {
                       } else {
                         return badges.Badge(
                           badgeContent: Text(
-                            '$tq',
+                            '$qty',
                             style: TextStyle(color: Colors.white),
                           ),
                           child: SizedBox(

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:new_kasir_apps/core/constants/variable.dart';
 import 'package:new_kasir_apps/core/exstensions/int_ext.dart';
 import 'package:new_kasir_apps/data/model/respons/product_respons.dart';
-import 'package:new_kasir_apps/presentation/home/bloc/bloc/checkout_bloc.dart';
+import 'package:new_kasir_apps/presentation/home/bloc/checkout/checkout_bloc.dart';
 import '../../../core/components/spaces.dart';
 import '../../../core/constants/colors.dart';
 
@@ -13,10 +13,10 @@ class ProductCard extends StatelessWidget {
   final VoidCallback onCartButton;
 
   const ProductCard({
-    super.key,
+    Key? key,
     required this.data,
     required this.onCartButton,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -112,8 +112,8 @@ class ProductCard extends StatelessWidget {
         builder: (context, state) {
           return state.maybeWhen(
               orElse: () => const SizedBox(),
-              success: (products, tQ, tP) {
-                if (tQ == 0) {
+              success: (products, qty, price) {
+                if (qty == 0) {
                   return const SizedBox();
                 }
 
