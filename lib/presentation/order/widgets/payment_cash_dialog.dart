@@ -11,6 +11,7 @@ import 'package:new_kasir_apps/core/exstensions/string_ext.dart';
 import 'package:new_kasir_apps/data/data_sources/sqlite_product_local_data.dart';
 import 'package:new_kasir_apps/presentation/order/bloc/order/order_bloc.dart';
 import 'package:new_kasir_apps/presentation/order/models/order_model.dart';
+import 'package:new_kasir_apps/presentation/order/widgets/button_uang.dart';
 import 'package:new_kasir_apps/presentation/order/widgets/payment_success_dialog.dart';
 
 class PaymentCashDialog extends StatefulWidget {
@@ -30,6 +31,21 @@ class _PaymentCashDialogState extends State<PaymentCashDialog> {
         TextEditingController(text: widget.price.currencyFormatRp);
 
     super.initState();
+  }
+
+  void _showDenominationsModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return DenominationList(
+          onDenominationSelected: (denomination) {
+            setState(() {
+              priceController!.text = denomination;
+            });
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -61,7 +77,6 @@ class _PaymentCashDialogState extends State<PaymentCashDialog> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SpaceHeight(16.0),
           CustomTextField(
             controller: priceController!,
             label: '',
@@ -74,30 +89,17 @@ class _PaymentCashDialogState extends State<PaymentCashDialog> {
                   TextPosition(offset: priceController!.text.length));
             },
           ),
-          SpaceHeight(16.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Button.filled(
-                onPressed: () {},
-                label: 'Uang Pas',
-                disabled: true,
-                textColor: AppColors.primary,
-                fontSize: 13.0,
-                width: 112.0,
-                height: 50.0,
-              ),
-              SpaceWidth(4.0),
-              Flexible(
-                  child: Button.filled(
-                onPressed: () {},
-                label: widget.price.currencyFormatRp,
-                disabled: true,
-                textColor: AppColors.primary,
-                fontSize: 13.0,
-                height: 50,
-              ))
-            ],
+          Flexible(
+            child: Button.outlined(
+              onPressed: () {
+                _showDenominationsModal(context);
+              },
+              label: 'pilih',
+              textColor: AppColors.primary,
+              fontSize: 13.0,
+              height: 25,
+              width: 80,
+            ),
           ),
           SpaceHeight(30.0),
           BlocConsumer<OrderBloc, OrderState>(

@@ -24,84 +24,95 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Setting'),
-        ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                children: [
-                  MenuButton(
-                    iconPath: Assets.images.manageProduct.path,
-                    label: 'Kelola Produk',
-                    onPressed: () => context.push(const ManageProductPage()),
-                    isImage: true,
-                  ),
-                  const SpaceWidth(15.0),
-                  MenuButton(
-                    iconPath: Assets.images.managePrinter.path,
-                    label: 'Kelola Printer',
-                    onPressed: () {
-                      context.push(const ManagePrinterPage());
-                    }, //=> context.push(const ManagePrinterPage()),
-                    isImage: true,
-                  ),
-                ],
+      appBar: AppBar(
+        title: const Text('Setting'),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  children: [
+                    MenuButton(
+                      iconPath: Assets.images.manageProduct.path,
+                      label: 'Kelola Produk',
+                      onPressed: () => context.push(const ManageProductPage()),
+                      isImage: true,
+                    ),
+                    const SpaceWidth(15.0),
+                    MenuButton(
+                      iconPath: Assets.images.managePrinter.path,
+                      label: 'Kelola Printer',
+                      onPressed: () {
+                        context.push(const ManagePrinterPage());
+                      },
+                      isImage: true,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                children: [
-                  MenuButton(
-                    iconPath: Assets.images.manageProduct.path,
-                    label: 'QRIS Server Key',
-                    onPressed: () => context.push(const SaveServerKeyPage()),
-                    isImage: true,
-                  ),
-                  const SpaceWidth(15.0),
-                  MenuButton(
-                    iconPath: Assets.images.managePrinter.path,
-                    label: 'Sinkronisasi Data',
-                    onPressed: () {
-                      Navigator.push(
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  children: [
+                    MenuButton(
+                      iconPath: Assets.images.manageProduct.path,
+                      label: 'QRIS Server Key',
+                      onPressed: () => context.push(const SaveServerKeyPage()),
+                      isImage: true,
+                    ),
+                    const SpaceWidth(15.0),
+                    MenuButton(
+                      iconPath: Assets.images.managePrinter.path,
+                      label: 'Sinkronisasi Data',
+                      onPressed: () {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SyncDatapage()));
-                    }, //=> context.push(const ManagePrinterPage()),
-                    isImage: true,
-                  ),
-                ],
+                            builder: (context) => const SyncDatapage(),
+                          ),
+                        );
+                      },
+                      isImage: true,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SpaceHeight(60),
-            const Divider(),
-            BlocConsumer<LogoutBloc, LogoutState>(
-              listener: (context, state) {
-                state.maybeMap(
-                  orElse: () {},
-                  success: (_) {
-                    AuthLocal().removeAuth();
-                    Navigator.pushReplacement(
+              const SpaceHeight(60),
+              const Divider(),
+              BlocConsumer<LogoutBloc, LogoutState>(
+                listener: (context, state) {
+                  state.maybeMap(
+                    orElse: () {},
+                    success: (_) {
+                      AuthLocal().removeAuth();
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const LoginPage()));
-                  },
-                );
-              },
-              builder: (context, state) {
-                return ElevatedButton(
-                  onPressed: () {
-                    context.read<LogoutBloc>().add(const LogoutEvent.logout());
-                  },
-                  child: const Text('Logout'),
-                );
-              },
-            ),
-            const Divider(),
-          ],
-        ));
+                          builder: (context) => const LoginPage(),
+                        ),
+                      );
+                    },
+                  );
+                },
+                builder: (context, state) {
+                  return ElevatedButton(
+                    onPressed: () {
+                      context
+                          .read<LogoutBloc>()
+                          .add(const LogoutEvent.logout());
+                    },
+                    child: const Text('Logout'),
+                  );
+                },
+              ),
+              const Divider(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

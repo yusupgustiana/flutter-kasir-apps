@@ -41,16 +41,26 @@ class ProductCard extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(50.0)),
-                child: CachedNetworkImage(
-                  imageUrl: '${Variable.imageBaseUrl}${data.image}',
-                  progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      CircularProgressIndicator(
-                          value: downloadProgress.progress),
-                  errorWidget: (context, url, error) => const Icon(
-                    Icons.food_bank,
-                    color: AppColors.primary,
-                  ),
-                  fit: BoxFit.cover,
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                    return CachedNetworkImage(
+                      imageUrl: '${Variable.imageBaseUrl}${data.image}',
+                      width: constraints
+                          .maxWidth, // Lebar maksimal gambar adalah lebar layar
+                      height: constraints
+                          .maxWidth, // Tinggi maksimal sesuai lebar agar tetap kotak
+                      progressIndicatorBuilder:
+                          (context, url, downloadProgress) =>
+                              CircularProgressIndicator(
+                                  value: downloadProgress.progress),
+                      errorWidget: (context, url, error) => const Icon(
+                        Icons.food_bank,
+                        color: AppColors.primary,
+                      ),
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
+                    );
+                  },
                 ),
               ),
             ),

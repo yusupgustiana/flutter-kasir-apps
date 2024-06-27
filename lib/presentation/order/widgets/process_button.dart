@@ -27,6 +27,8 @@ class ProcessButton extends StatelessWidget {
           color: AppColors.primary,
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment
+              .spaceBetween, // Menyebarkan elemen secara merata
           children: [
             BlocBuilder<CheckoutBloc, CheckoutState>(
               builder: (context, state) {
@@ -54,19 +56,22 @@ class ProcessButton extends StatelessWidget {
                 );
               },
             ),
-            const Spacer(),
-            const Text(
-              'Proses',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const SpaceWidth(5.0),
-            const Icon(
-              Icons.chevron_right,
-              color: AppColors.white,
+            Row(
+              children: [
+                const Text(
+                  'Proses',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SpaceWidth(5.0),
+                const Icon(
+                  Icons.add_shopping_cart_rounded,
+                  color: AppColors.white,
+                ),
+              ],
             ),
           ],
         ),

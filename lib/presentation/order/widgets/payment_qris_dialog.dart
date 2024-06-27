@@ -102,11 +102,11 @@ class _PaymentQrisDialogState extends State<PaymentQrisDialog> {
                                 totalPrice: total,
                                 idKasir: idKasir,
                                 namaKasir: namaKasir,
-                                transactionTime: DateFormat('yyyy-MM-ddTHH:mm:ss')
-                          .format(DateTime.now()),
+                                transactionTime:
+                                    DateFormat('yyyy-MM-ddTHH:mm:ss')
+                                        .format(DateTime.now()),
                                 isSync: false);
-                            ProductLocalData.instance
-                                .saveOrder(orderModel);
+                            ProductLocalData.instance.saveOrder(orderModel);
                             context.pop();
                             showDialog(
                               context: context,

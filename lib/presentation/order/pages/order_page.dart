@@ -22,18 +22,7 @@ class OrderPage extends StatefulWidget {
 class _OrderPageState extends State<OrderPage> {
   final indexValue = ValueNotifier(0);
 
-  // final List<OrderModel> orders = [
-  //   OrderModel(
-  //     image: Assets.images.f1.path,
-  //     name: 'Nutty Oat Latte',
-  //     price: 39000,
-  //   ),
-  //   OrderModel(
-  //     image: Assets.images.f2.path,
-  //     name: 'Iced Latte',
-  //     price: 24000,
-  //   ),
-  // ];
+
 
   List<OrderItem> orders = [];
 

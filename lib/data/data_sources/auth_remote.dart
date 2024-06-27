@@ -9,7 +9,8 @@ class AuthRemote {
     String email,
     String password,
   ) async {
-    final response = await http.post(Uri.parse('${Variable.baseUrl}/api/login'), body: {
+    final response =
+        await http.post(Uri.parse('${Variable.baseUrl}/api/login'), body: {
       'email': email,
       'password': password,
     });

@@ -106,7 +106,7 @@ class ProductLocalData {
   Future<Database> get database async {
     if (_database != null) return _database!;
 
-    _database = await _initDB('produasc.db');
+    _database = await _initDB('producaats.db');
     return _database!;
   }
 

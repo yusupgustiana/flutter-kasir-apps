@@ -22,18 +22,18 @@ class SyncOrderBloc extends Bloc<SyncOrderEvent, SyncOrderState> {
             .getOrderItemByOrderIdLocal(order.id!);
 
         final orderRequest = OrderRequestModel(
-          transactionTime: order.transactionTime,
-          kasirId: order.idKasir,
-          totalPrice: order.totalPrice,
-          totalItem: order.totalQuantity,
-          paymentMethod: order.paymentMethod,
-          orderItems: orderItems
-              // .map((e) => OrderItemModel(
-              //     productId: e.productId,
-              //     quantity: e.quantity,
-              //     totalPrice: e.totalPrice * e.quantity))
-              // .toList(),
-        );
+            transactionTime: order.transactionTime,
+            kasirId: order.idKasir,
+            totalPrice: order.totalPrice,
+            totalItem: order.totalQuantity,
+            paymentMethod: order.paymentMethod,
+            orderItems: orderItems
+            // .map((e) => OrderItemModel(
+            //     productId: e.productId,
+            //     quantity: e.quantity,
+            //     totalPrice: e.totalPrice * e.quantity))
+            // .toList(),
+            );
         final response = await orderRemote.sendOrder(orderRequest);
         if (response) {
           await ProductLocalData.instance.updateIsSyncOrderById(order.id!);
