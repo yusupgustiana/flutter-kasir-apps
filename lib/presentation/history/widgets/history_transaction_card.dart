@@ -33,7 +33,16 @@ class HistoryTransactionCard extends StatelessWidget {
       child: ListTile(
         leading: Assets.icon.payments.svg(),
         title: Text(data.paymentMethod),
-        subtitle: Text('${data.totalQuantity} items'),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('${data.totalQuantity} items'),
+            Text(
+              'Kasir : ${data.namaKasir}',
+              style: TextStyle(fontSize: 12, color: Colors.grey),
+            ),
+          ],
+        ),
         trailing: Text(
           data.totalPrice.currencyFormatRp,
           style: const TextStyle(

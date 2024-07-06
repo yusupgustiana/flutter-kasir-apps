@@ -18,6 +18,9 @@ class $AssetsIconGen {
   SvgGenImage get allCategories =>
       const SvgGenImage('assets/icon/all_categories.svg');
 
+  /// File path: assets/icon/avatar.svg
+  SvgGenImage get avatar => const SvgGenImage('assets/icon/avatar.svg');
+
   /// File path: assets/icon/cash.svg
   SvgGenImage get cash => const SvgGenImage('assets/icon/cash.svg');
 
@@ -69,6 +72,7 @@ class $AssetsIconGen {
   /// List of all assets
   List<dynamic> get values => [
         allCategories,
+        avatar,
         cash,
         dashboard,
         debit,
@@ -115,6 +119,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/f8.jpeg
   AssetGenImage get f8 => const AssetGenImage('assets/images/f8.jpeg');
 
+  /// File path: assets/images/kasir.png
+  AssetGenImage get kasir => const AssetGenImage('assets/images/kasir.png');
+
   /// File path: assets/images/kopi1.jpg
   AssetGenImage get kopi1 => const AssetGenImage('assets/images/kopi1.jpg');
 
@@ -146,6 +153,7 @@ class $AssetsImagesGen {
         f6,
         f7,
         f8,
+        kasir,
         kopi1,
         kopi2,
         logo,

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_kasir_apps/core/constants/colors.dart';
 
-
-
-
 class SearchInput extends StatelessWidget {
   final TextEditingController controller;
   final Function(String value)? onChanged;

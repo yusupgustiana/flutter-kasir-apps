@@ -19,7 +19,12 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [const HomePage(), const OrderPage(), HistoryPage(), const SettingPage()];
+  final List<Widget> _pages = [
+    const HomePage(),
+    const OrderPage(),
+    HistoryPage(),
+    const SettingPage()
+  ];
 
   @override
   Widget build(BuildContext context) {

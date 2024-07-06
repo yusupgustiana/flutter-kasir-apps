@@ -55,7 +55,8 @@ class ProductCard extends StatelessWidget {
                                   value: downloadProgress.progress),
                       errorWidget: (context, url, error) => const Icon(
                         Icons.food_bank,
-                        color: AppColors.primary,
+                        color: AppColors.grey,
+                        size: 80,
                       ),
                       fit: BoxFit.cover,
                       alignment: Alignment.topCenter,

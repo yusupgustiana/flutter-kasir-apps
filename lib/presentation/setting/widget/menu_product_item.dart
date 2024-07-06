@@ -156,7 +156,7 @@ class MenuProductItem extends StatelessWidget {
                         },
                         label: 'Ubah Produk',
                         fontSize: 8.0,
-                        color: Colors.purpleAccent,
+                        color: Colors.blueAccent,
                         height: 31,
                       ),
                     ),

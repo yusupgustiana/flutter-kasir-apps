@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:new_kasir_apps/core/constants/colors.dart';
 import 'package:new_kasir_apps/core/exstensions/build_context_ext.dart';
 import 'package:new_kasir_apps/presentation/setting/pages/manage_printer.dart';
 import 'package:new_kasir_apps/presentation/setting/pages/sync_data_page.dart';
@@ -104,6 +105,14 @@ class _SettingPageState extends State<SettingPage> {
                           .read<LogoutBloc>()
                           .add(const LogoutEvent.logout());
                     },
+                    style: ElevatedButton.styleFrom(
+                      textStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                      backgroundColor: AppColors.primary,
+                      foregroundColor: Colors.white,
+                    ),
                     child: const Text('Logout'),
                   );
                 },

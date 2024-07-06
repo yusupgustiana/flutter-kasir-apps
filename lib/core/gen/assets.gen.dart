@@ -65,6 +65,7 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/snack.svg
   SvgGenImage get snack => const SvgGenImage('assets/icon/snack.svg');
+  SvgGenImage get avatar => const SvgGenImage('assets/icon/avatar.svg');
 
   /// List of all assets
   List<dynamic> get values => [
@@ -84,7 +85,8 @@ class $AssetsIconGen {
         payments,
         print,
         qrCode,
-        snack
+        snack,
+        avatar
       ];
 }
 
@@ -123,6 +125,7 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+  AssetGenImage get kasir => const AssetGenImage('assets/images/kasir.png');
 
   /// File path: assets/images/manage_printer.png
   AssetGenImage get managePrinter =>
@@ -146,6 +149,7 @@ class $AssetsImagesGen {
         f6,
         f7,
         f8,
+        kasir,
         kopi1,
         kopi2,
         logo,

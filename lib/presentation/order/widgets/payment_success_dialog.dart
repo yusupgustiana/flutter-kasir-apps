@@ -257,7 +257,7 @@ class PaymentSuccessDialog extends StatelessWidget {
   }
 
   String _hitungKembalian(int total, int nominal) {
-    int kembalianAmount = total - nominal;
+    int kembalianAmount = nominal -total;
     return kembalianAmount.currencyFormatRp;
   }
 }

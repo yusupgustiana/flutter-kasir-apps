@@ -9,8 +9,12 @@ class AuthResponseModel {
     required this.token,
   });
 
-  factory AuthResponseModel.fromJson(String str) =>
-      AuthResponseModel.fromMap(json.decode(str));
+  factory AuthResponseModel.fromJson(String str) {
+    if (str.isEmpty) {
+      throw Exception('Data JSON kosong');
+    }
+    return AuthResponseModel.fromMap(json.decode(str));
+  }
 
   String toJson() => json.encode(toMap());
 

@@ -22,8 +22,6 @@ class OrderPage extends StatefulWidget {
 class _OrderPageState extends State<OrderPage> {
   final indexValue = ValueNotifier(0);
 
-
-
   List<OrderItem> orders = [];
 
   int totalPrice = 0;
@@ -51,12 +49,6 @@ class _OrderPageState extends State<OrderPage> {
       appBar: AppBar(
         title: const Text('Order Detail'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Assets.icon.delete.svg(),
-          ),
-        ],
       ),
       body: BlocBuilder<CheckoutBloc, CheckoutState>(
         builder: (context, state) {

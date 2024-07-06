@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:new_kasir_apps/core/constants/colors.dart';
 import 'package:new_kasir_apps/core/exstensions/build_context_ext.dart';
 
-
-
-
 class TabCustom extends StatelessWidget {
   final List<TabMenu> children;
   final EdgeInsetsGeometry? padding;

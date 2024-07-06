@@ -71,19 +71,20 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       // Memancarkan state _Success baru dengan keranjang belanja yang diperbarui, total kuantitas, dan total harga
       emit(_Success(newCheckout, totalQuantity, totalPrice));
     });
-
     on<_RemoveAllCheckout>((event, emit) {
-      // Menginisialisasi keranjang belanja baru dengan array kosong
-      List<OrderItem> newCheckout = [];
+      var currentStates = state as _Success;
+      List<OrderItem> newCheckout = [...currentStates.products];
 
-      // Memancarkan event _Loading untuk menunjukkan bahwa proses sedang berlangsung
-      emit(const _Loading());
+      // Remove hanya produk yang sesuai dengan event.product
+      newCheckout.removeWhere((item) => item.product == event.product);
 
-      // Menghitung total kuantitas dan total harga untuk item-item yang tersisa dalam keranjang belanja baru
       int totalQuantity = 0;
       int totalPrice = 0;
+      for (var element in newCheckout) {
+        totalQuantity += element.quantity;
+        totalPrice += element.quantity * element.product.price;
+      }
 
-      // Memancarkan state _Success baru dengan keranjang belanja yang kosong, total kuantitas, dan total harga
       emit(_Success(newCheckout, totalQuantity, totalPrice));
     });
   }
