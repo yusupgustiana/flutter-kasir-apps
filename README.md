@@ -1,9 +1,6 @@
 # new_kasir_apps
-
-![Screenshot Aplikasi](assets/logo/Screenshot_20240709_191525.jpg)
-![Screenshot Aplikasi](assets/logo/Screenshot_20240709_191831.jpg)
-![Screenshot Aplikasi](assets/logo/Screenshot_20240709_191838.jpg)
-![Screenshot Aplikasi](assets/logo/Screenshot_20240709_191908.jpg)
+<img src="assets/logo/Screenshot_20240709_191525.jpg" alt="Nama yang diinginkan" width="250"/><img src="assets/logo/Screenshot_20240709_191831.jpg" alt="Nama yang diinginkan" width="250"/><br/><br/>
+<img src="assets/logo/Screenshot_20240709_191838.jpg" alt="Nama yang diinginkan" width="250"/><img src="assets/logo/Screenshot_20240709_191908.jpg" alt="Nama yang diinginkan" width="250"/>
 
 
 
