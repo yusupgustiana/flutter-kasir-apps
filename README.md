@@ -1,16 +1,12 @@
 # new_kasir_apps
+<img src="assets/logo/Screenshot_20240709_191525.jpg" alt="Nama yang diinginkan" width="250"/><img src="assets/logo/Screenshot_20240709_191831.jpg" alt="Nama yang diinginkan" width="250"/><br/><br/>
+<img src="assets/logo/Screenshot_20240709_191838.jpg" alt="Nama yang diinginkan" width="250"/><img src="assets/logo/Screenshot_20240709_191908.jpg" alt="Nama yang diinginkan" width="250"/>
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+[Download Aplikasi](https://drive.google.com/file/d/1SmnhGPo-p64YsBYmztjFPFSzOvMuVpIG/view?usp=drivesdk)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Email : yusuf@gmail.com
+password : 12345678
